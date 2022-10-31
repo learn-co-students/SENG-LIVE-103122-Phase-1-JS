@@ -55,6 +55,8 @@ title: "VSCode Reveal intro"
 
 ---
 
+<div style="font-size: 0.75em">
+
 ### My Setup
 
 ##### VSCode extensions:
@@ -65,6 +67,8 @@ Extension | Description |
  [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) | for opening a webpage in the browser that will reload when the code is saved 
  [vscode-reveal](https://marketplace.visualstudio.com/items?itemName=evilz.vscode-reveal) | for opening the slide.md files in the browser to display slideshows
  [Tabnine AI Autocomplete](https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode) | for code completion suggestions based on context
+
+</div>
 
 ---
 
@@ -90,6 +94,8 @@ Extension | Description |
 
 ---
 
+<div style="font-size: 0.75em">
+
 ### Let's Code!
 
 Function | Parameters | Behavior
@@ -97,6 +103,8 @@ Function | Parameters | Behavior
  helloWorld | none | returns "Hello, world!"
  formatPrice | price (float) | returns the price like so: "$2.99" 
  titleAndAuthor | book (object) | returns a string containing both the title and author of the book
+
+</div>
 
 ---
 
@@ -116,13 +124,17 @@ Function | Parameters | Behavior
 
 ---
 
-## Links!
+<div style="font-size: 0.75em">
+
+### Links!
 
 
 Resource | Location | Description
 ---------|----------|---------
  Starter Code | [GitHub Repo](https://github.com/learn-co-students/SENG-LIVE-101022-Phase-1-JS) | separate folder for each day's lecture contains the code and any related assets
  Recordings | [Google Sheet](https://docs.google.com/spreadsheets/d/139yeG9joHfaP8hT44z2iSLMv5ScLSc86ZKZ51csIfHo/edit#gid=0) | Links to the starter & solution code for each days video along with the video link and a notetaking doc you can use for practice 
+
+</div>
 
 ---
 
