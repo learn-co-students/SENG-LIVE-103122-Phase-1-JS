@@ -85,3 +85,75 @@ const inventory = [
 
 
 // Ideas: 
+
+console.log("hello world")
+
+
+function greet(firstName) {
+  // debugger;
+  console.log(`Hi ${firstName}, welcome to phase 1, JS!`);
+}
+
+// const name = "Hanna"
+const otherName = "Caylan"
+
+greet("Mark");
+
+// define a constant to work with one element in the array:
+
+const globalBook = inventory[0];
+
+// function declaration
+function priceFormatter(priceNum) {
+  // return `$${priceNum.toFixed(2)}`;
+  return '$' + priceNum.toFixed(2);
+}
+
+// function invocation
+const firstBookPrice = priceFormatter(globalBook.price);
+console.log(firstBookPrice);
+
+// arrow version of priceFormatter:
+
+// // function declaration
+// const priceFormatter = (priceNum) => '$' + priceNum.toFixed(2);
+
+// // function invocation
+// console.log(priceFormatter(book.price));
+
+// using arrow function syntax for callbacks is cleaner:
+// inventory.forEach(element => console.log(element))
+
+// vs
+
+// inventory.forEach(function(element){ console.log(element)})
+
+// // callbacks can be declared separately and then passed to a higher order function like map
+
+// const callback = (book) => {
+//   return priceFormatter(book.price)
+// }
+
+// console.log(inventory.map(callback));
+
+// // or we can just define an arrow function inline and pass it as an argument to map
+
+const formattedBooks = inventory.map(bookObj => {
+  let price = priceFormatter(bookObj.price);
+  let author = bookObj.author;
+  let title = bookObj.title;
+  // return "Eloquent JavaScript by Martin Haverbeke is on sale for $10.00"
+  return `${title} by ${author} is on sale for ${price}`;
+})
+
+console.log(formattedBooks);
+
+const simplifiedBookObjects = inventory.map(bookObj => {
+  return {
+    price: priceFormatter(bookObj.price),
+    author: bookObj.author,
+    title: bookObj.title
+  }
+})
+
+console.log(simplifiedBookObjects);
