@@ -70,8 +70,10 @@ https://techcrunch.com/wp-content/uploads/2007/10/picture-242.png
 - Add content with `.textContent=`
 - Create elements with `.createElement`
 - Append elements to the DOM with `.appendChild` and `.append`
-- Explain the dangers of `innerHTML=` and when it's safe to use
+- Explain the dangers of `innerHTML=`
 - Remove content with `.remove`
+- Visit <a href="https://www.tvmaze.com/" rel="noopener noreferrer" target="_blank">TVMaze</a> to practice
+
 
 ---
 
@@ -89,6 +91,7 @@ https://techcrunch.com/wp-content/uploads/2007/10/picture-242.png
 #### Links!
 
 - [DOM chapter in Eloquent JavaScript](https://eloquentjavascript.net/14_dom.html)
+- [The Dangers of InnerHTML](https://betterprogramming.pub/dom-manipulation-the-dangers-of-innerhtml-602f4119d905)
 - [MDN - NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 - [MDN - HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
 - [MDN - Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)

@@ -16,9 +16,8 @@ data.js contains Book Store data for the application. It’s loaded before our i
 
 - Demo querySelector:    
     - Create a function that sets the text content of the header to the bookstore name.
-
-- Demo querySelectorAll:   
-    - Create a function that grabs all the divs from the footer. Render the bookstore name,, address, and hours 
+- Demo getElementById:   
+    - Create a function that grabs all the divs from the footer. Render the bookstore name, address, and hours 
 - Demo createElement   
     - Iterate through bookdata.inventory (an array of book objects). For every object in the array create an `<li>`, `<h3>` , 2 `<p>` tags, and an `<img>` element. 
     - Add a book title to the h3 text content, the author and price to the ptags
