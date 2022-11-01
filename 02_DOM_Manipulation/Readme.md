@@ -111,3 +111,9 @@ div.remove()
 div.innerHTML = ''
 
 ```
+
+## Resources
+
+- [XSS Demo on Codesandbox](https://codesandbox.io/s/dark-silence-5rbq0x?file=/index.html)
+- [Docs on XSS](https://owasp.org/www-community/attacks/xss/)
+- [The dangers of innerHTML](https://betterprogramming.pub/dom-manipulation-the-dangers-of-innerhtml-602f4119d905)

@@ -1,6 +1,6 @@
 const bookStore = {
   location: "Seattle",
-  address:'333 st ne Seattle wa 99999',
+  address: '333 st ne Seattle wa 99999',
   number: 9999999999,
   name: 'Easley\'s Technical Books',
   hours: 'Monday - Friday 9am - 6pm',
