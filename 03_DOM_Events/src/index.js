@@ -45,7 +45,7 @@ function renderBook(book) {
     const img = document.createElement('img');
     img.src = book.imageUrl;
     img.alt = `${book.title} cover`;
-;
+
     const btn = document.createElement('button');
 
     btn.textContent = 'Delete';

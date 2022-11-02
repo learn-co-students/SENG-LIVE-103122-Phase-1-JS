@@ -1,3 +1,17 @@
+body {
+  transition: opacity 400ms ease-in;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+/* allows us to animate a collapsed element appearing after a click  */
+.collapsed {
+  max-height: 0;
+  overflow: hidden;
+}
+
 header {
   background-image: url("assets/books.png");
   height: 10%;
@@ -93,6 +107,9 @@ input[type=submit]{
 form {
   margin: 10px auto 10px auto;
   width: 400px; 
+  /* these 2 lines of styles help animate transition of form from collapsed to visible */
+  max-height: 371px;
+  transition: max-height 200ms ease-in-out;
   display: flex;
   flex-direction: column;
 }
