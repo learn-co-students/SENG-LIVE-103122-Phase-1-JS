@@ -1,22 +1,20 @@
-renderHeader()
-renderFooter()
-bookStore.inventory.forEach(renderBook)
+renderHeader(bookStore);
+renderFooter(bookStore);
+bookStore.inventory.forEach(renderBook);
 
 function priceFormatter(price) {
   let formattedPrice = Number(price).toFixed(2);
   return `$${formattedPrice}`;
 }
-
-// Renders Header
-function renderHeader(){
-    document.querySelector('h1').textContent = bookStore.name;
+// create a function renderHeader() that takes the store name from bookStore and adds to the DOM
+function renderHeader(bookStore) {
+  document.querySelector('header h1').textContent = bookStore.name;
 }
-// Renders Footer
-function renderFooter(){
-    const footerDivs = document.querySelectorAll('footer div');
-    footerDivs[0].textContent = bookStore.name;
-    footerDivs[1].textContent = bookStore.address;
-    footerDivs[2].textContent = bookStore.hours;
+
+function renderFooter(bookStore) {
+  document.querySelector('#address').textContent = bookStore.address;
+  document.querySelector('#number').textContent = bookStore.number;
+  document.querySelector('#store').textContent = bookStore.location;
 }
 
 // function: renderBook(book)

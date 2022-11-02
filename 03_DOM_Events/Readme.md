@@ -20,10 +20,10 @@
     - Pass the eventListener a callback that handles the form.
     - The callback takes the event as a parameter.
     - It should prevent the form's default behavior.
-    - It should build a book object useing the event object through the name attribute (e.target.title.value),  the id attribute (note the ids are in kabab case so you’ll need to select the id with bracket notation (e.target[form-title].value) or index of the input (e.target[0].value)
-    - Call renderBookCard and pass it the new book object.
-- Demo DOMcontentLoaded
-    - Add a DOMcontentLoaded eventListener to the document and wrap the code within the callback function
+    - It should build a book object using the event object through the name attribute (e.target.title.value), the id attribute (note the ids are in kabab case so you’ll need to select the id with bracket notation (e.target[form-title].value) or index of the input (e.target[0].value)
+    - Call renderBook and pass it the new book object.
+- Demo DOMContentLoaded
+    - Add a DOMContentLoaded eventListener to the document and wrap the code within the callback function
 - Bonus
 	- Create a new store object with the same properties as BookStore.
 	- Add a button that toggles the store information to a different store.
@@ -31,14 +31,15 @@
 
 
 ## Events
-When the user interacts with the dom, it fires events that trigger an effect in our JavaScript code that can do something. Such as updating the dom or adding content to the database. 
+When the user interacts with the DOM, it fires events that trigger an effect in our JavaScript code that can do something. Such as updating the DOM or adding content to the database. 
 
-To pick up events, our code must 'listen' for the event. addEventListener will do just that. It takes 2 arguments, the first is the event it's listening for, and the second is the code that will run once the event is triggered.
+To pick up events, our code must 'listen' for the event. The `addEventListener` method will do just that. It takes 2 arguments, the first is the event it's listening for, and the second is the function that will run once the event is triggered.
 
-```
+```js
 div.addEventListener('click', () => console.log('hi'))
 
-//When events are triggered, the event object is passed to the second argument as an argument to the callback.
+// When events are triggered, the event object is passed as an argument
+// to the event handler function (the callback passed as the second arg to addEventListener)
 div.addEventListener('click', (e) => console.log(e))
 
 ```
@@ -52,16 +53,17 @@ The submit event can be used to retrieve the value of those inputs.
 
 When a form submits, it will, by default, try to send a request and refresh the page. To prevent that, we need to call e.preventDefault(). Afterward, the event can be used to grab the form values through the target attribute.
 
-```
+```html
 <form>
-    <input type="text" name='favColor'/>
-    <input type="submit" />
+  <input type="text" name='favColor'/>
+  <input type="submit" />
 </form>
+```
 
+```js
 form.addEventListener('submit',(e)=> {
-    e.preventDefault
-    //Here we are using the name property from the form to target the specific input.
-    console.log(e.target.faveColor.value)
+  e.preventDefault
+  //Here we are using the name property from the form to target the specific input.
+  console.log(e.target.faveColor.value)
 })
-
 ```
