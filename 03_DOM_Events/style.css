@@ -104,12 +104,17 @@ input[type=submit]{
   font-weight: bold;
 }
 
+button, [type="submit"] {
+  cursor: pointer;
+}
+
+
 form {
   margin: 10px auto 10px auto;
   width: 400px; 
   /* these 2 lines of styles help animate transition of form from collapsed to visible */
   max-height: 371px;
-  transition: max-height 200ms ease-in-out;
+  transition: max-height 400ms ease-in-out;
   display: flex;
   flex-direction: column;
 }

@@ -150,7 +150,8 @@ otherForm.addEventListener('submit', (e) => {
 <script>
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
-  console.log(form.q);
+  e.preventDefault();
+  console.log(form.q.value);
 }));
 </script></code></pre>
 

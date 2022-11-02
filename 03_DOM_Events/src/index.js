@@ -40,7 +40,7 @@ function renderBook(book) {
     pAuthor.textContent = book.author;
     
     const pPrice = document.createElement('p');
-    pPrice.textContent = `$${book.price}`;
+    pPrice.textContent = priceFormatter(book.price);
     
     const img = document.createElement('img');
     img.src = book.imageUrl;
@@ -54,3 +54,50 @@ function renderBook(book) {
     document.querySelector('#book-list').append(li);
 }
 
+const toggleFormButton = document.querySelector('#toggleForm');
+let formVisible = false;
+
+function toggleForm() {
+  const form = document.querySelector('#book-form')
+  form.classList.toggle('collapsed')
+  if (form.classList.contains('collapsed')) {
+    formVisible = false;
+    toggleFormButton.textContent = "New Book";
+  } else {
+    formVisible = true;
+    toggleFormButton.textContent = "Hide Book form";
+  }
+}
+toggleFormButton.addEventListener('click', toggleForm);
+
+window.addEventListener('keydown', (e) => {
+  console.log(e);
+  console.log(e.key);
+  if (e.key === "Escape" && formVisible) {
+    toggleForm();
+  }
+})
+
+const newBookForm = document.querySelector('#book-form');
+
+newBookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // we want our book object that we're going to pass to renderBook to look like the below:
+  // {
+  //   title: 'Eloquent JavaScript: A Modern Introduction to Programming',
+  //   author: 'Marjin Haverbeke',
+  //   price: 10.00,
+  //   inventory: 10,
+  //   imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
+  // },
+  const book = {
+    title: e.target.title.value,
+    author: e.target.author.value,
+    price: e.target.price.value,
+    inventory: e.target.inventory.value,
+    imageUrl: e.target.imageUrl.value
+  }
+  renderBook(book);
+  toggleForm();
+  e.target.reset();
+})
