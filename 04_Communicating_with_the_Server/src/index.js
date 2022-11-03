@@ -68,7 +68,7 @@ function priceFormatter(price) {
   return `$${formattedPrice}`;
 }
 
-bookStore.inventory.forEach(renderBook);
+// bookStore.inventory.forEach(renderBook);
 
 // Event handlers 
 const form = document.querySelector('#book-form');
@@ -102,9 +102,68 @@ form.addEventListener('submit', (e) => {
 })
 
 //Invoking functions
-renderHeader(bookStore)
-renderFooter(bookStore)
-bookStore.inventory.forEach(renderBookCard)
-document.querySelector('#book-form').addEventListener('submit', handleForm)
 
+// bookStore.inventory.forEach(renderBook)
+// document.querySelector('#book-form').addEventListener('submit', handleForm)
 
+console.log('about to fetch');
+fetch('http://localhost:3000/stores/1')
+  .then((res) => res.json())
+  .then((bookStore) => {
+    console.log(bookStore);
+    renderHeader(bookStore)
+    renderFooter(bookStore)
+  })
+  .catch(err => {
+    console.error(err);
+    makeError('Make sure to start json-server!')
+  });
+
+// load all the books and render them
+fetch("http://localhost:3000/books")
+  .then((res) => res.json())
+  .then((books) => {
+    console.log(books);
+    books.forEach(book => renderBook(book))
+  })
+  .catch(err => {
+    console.error(err);
+    makeError('Make sure to start json-server!')
+  });
+
+function makeError(message) {
+  const main = document.querySelector('main');
+  const errorDiv = document.createElement('div');
+  errorDiv.className = "error";
+  errorDiv.textContent = message;
+  main.prepend(errorDiv);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+      errorDiv.remove();
+    }
+  })
+}
+
+console.log('fetch has been called');
+
+//If I need to handle errors:
+// this tells me that the status code of server response was in the ok range:
+
+// fetch('http://localhost:3000/stores/4')
+//   .then((res) => {
+//     if (res.ok) {
+//       return res.json();
+//     } else {
+//       console.log("whoops! Something went wrong");
+//       console.error(res.status);
+//     }
+//   })
+
+// this just tells me that I got a response from the server
+// fetch('http://localhost:3000/stores/4')
+//   .then((res) => res.json()) // resolves if I got a response from server (even if the response was an error)
+//   .then(console.log)
+//   .catch(error => { // catch doesn't run unless an error is thrown so we don't see these logs
+//     console.log("an error occurred");
+//     console.error(error);
+//   })
