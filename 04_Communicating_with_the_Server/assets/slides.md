@@ -83,6 +83,42 @@ Open devtools in Chrome for the slideshow and demo the network tab.
 
 </aside>
 
+
+---
+
+### Synchronous vs Asynchronous Code
+
+<img src="https://cdn-images-1.medium.com/max/749/0*arL3BF9VGPooOPIT" alt="Synchronous vs Asynchronous code diagram" />
+
+<small>Image source: <a href="https://laptrinhx.com/javascript-promises-a-zendesk-introduction-173205527/" rel="noopener noreferrer" target="_blank">Laptrinx.com</a></small>
+
+<aside class="notes">
+
+- When we order food at a restaurant, the chefs don't wait till one dish is completely ready before starting on the next one. 
+- They take in the orders from the wait staff and complete them with priorities in mind. 
+- They'll finish appetizers first and they may also be dealing with meals ordered by other customers at the same time
+- The restaurant could not function properly if dishes could only be processed one at a time and it would be very awkward for our guests if dishes were delivered one at a time in the same order that they were placed!
+- Whoever ordered first would end up with cold food! :( 
+- Instead, orders are handled asynchronously, this means that appetizers can be delivered when they're ready, potentially a couple at a time
+
+</aside>
+
+---
+
+### Delivering a better experience
+
+<img src="https://cdn.buttercms.com/hmirWTF7TBCsX6mncY0P" alt="Synchronous vs Asynchronous delivery in terms of time" />
+
+<small>Image source: <a href="https://scoutapm.com/blog/async-javascript" rel="noopener noreferrer" target="_blank">Scout APM</a></small>
+
+---
+
+### Promises
+
+<img src="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png" alt="Promise Diagram" />
+
+* <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" rel="noopener noreferrer" target="_blank">MDN - Promise</a> * <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" rel="noopener noreferrer" target="_blank">MDN - Using Fetch</a>
+
 ---
 
 ### HTTP Verbs & CRUD
@@ -127,6 +163,8 @@ JSON is:
 ## Mocking the server with 
 ## json-server
 
+<img src="https://media.giphy.com/media/3oKHW5ygEPHUNrb1SM/giphy.gif" alt="Spongebob delivering a Krabby Patty" />
+
 ---
 
 ### Installation
@@ -146,7 +184,7 @@ npm install -g json-server
 
 ---
 
-
+<div style="width: 90%; margin: 0 auto;">
 <div style="display: flex; flex-direction: row">
   <div style="width: 50%">
     
@@ -160,8 +198,14 @@ npm install -g json-server
   </div>
 </div>
 
-<div style="display: flex; flex-direction: row">
+<div style="display: flex; flex-direction: row;">
   <div style="width: 50%; display: flex; flex-direction: column; justify-content: center">
+
+```bash
+cd 04_Communicating_with_the_Server/assets
+touch db.json
+```
+<small>copy and paste the below into the assets/db.json file:</small>
 
 ```json
 {
@@ -173,7 +217,6 @@ npm install -g json-server
 ```
 
 ```bash
-cd 04_Communicating_with_the_Server/assets
 json-server --watch db.json
 ```
 
@@ -196,3 +239,12 @@ json-server --watch db.json
   </div>
 </div>
 
+</div>
+
+---
+
+#### Make sure to start json-server from the right place!
+
+<img src="https://media.giphy.com/media/BZhvKu7MT0n2voRhtf/giphy.gif" alt="Woman in plug running and jumping into an outlet" />
+
+- If you run `json-server --watch db.json`, then your terminal will need to be in the same working directory as the db.json file. 
