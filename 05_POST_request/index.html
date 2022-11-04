@@ -11,7 +11,7 @@
     <script defer src="src/index.js"></script>
     
 
-    <title>JS Data Types and Variables</title>
+    <title>POST Requests</title>
   </head>
   <body>
     <div class="list" id="header">
@@ -22,8 +22,11 @@
         </div>
       </header>
       <main>
+        <select id="store-selector"></select>
         <div id="form-wrapper">
-          <form id="book-form">
+          <button id="toggleBookForm">New Book</button>
+          <button id="toggleStoreForm">New Store</button>
+          <form id="book-form" class="collapsed">
             <label for="title">Title:</label>
             <input type="text" id="form-title" name="title">
 
@@ -41,7 +44,7 @@
               
             <input type="submit" value="ADD BOOK"/>
           </form>
-          <form id="store-form" class="hidden">
+          <form id="store-form" class="collapsed">
             <label for="name">Name:</label>
             <input type="text" id="form-name" name="name">
 

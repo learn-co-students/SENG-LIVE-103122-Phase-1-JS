@@ -1,6 +1,13 @@
+/* allows us to animate a collapsed element appearing after a click  */
+.collapsed {
+  max-height: 0;
+  overflow: hidden;
+}
+
 header {
   background-image: url("assets/books.png");
   height: 10%;
+  min-height: 88px;
   opacity: 0.8;
   border-top: solid;
   border-width: 30px;
@@ -71,7 +78,7 @@ main {
   padding: 10px;
 }
 
-label{
+label {
   font-family: Verdana;
 }
 
@@ -81,7 +88,7 @@ input {
   margin: 3px;
 }
 
-input[type=submit]{
+input[type=submit] {
   border: none;
   background-color: #2e824d;
   color: rgb(255, 255, 255);
@@ -97,6 +104,8 @@ button, [type="submit"] {
 form {
   margin: 10px auto;
   width: 400px; 
+  max-height: 371px;
+  transition: max-height 300ms ease-in-out;
   display: flex;
   flex-direction: column;
 }
@@ -105,16 +114,22 @@ footer {
   text-align: center;
 }
 
-.book-inventory-form{
+.book-inventory-form {
   width: 100%;
 }
 
-.book-inventory-form input{
+.book-inventory-form input {
   height: 30px;
   width: 100%;
   margin: 3px;
 }
 
-.hidden{
+.hidden {
   display: none;
+}
+
+.error {
+  text-align: center;
+  background: lightcoral;
+  padding: 20px;
 }
