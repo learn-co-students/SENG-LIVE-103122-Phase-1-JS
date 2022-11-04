@@ -165,14 +165,92 @@ bookForm.addEventListener('submit', (e) => {
     imageUrl: e.target.imageUrl.value
   }
   // pass the info as an argument to renderBook for display!
-  renderBook(book);
+  
   // 1. Add the ability to perist the book to the database when the form is submitted. When this works, we should still see the book that is added to the DOM on submission when we refresh the page.
 
+  // optimistic or pessimistic rendering here?
+
+  // optimistic version
+  
+  // fetch('http://localhost:3000/books', {
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(book)
+  // })
+  // renderBook(book);
+
+  // pessimistic version
+  // fetch('http://localhost:3000/books', {
+  //   method: 'POST',
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(book)
+  // })
+  //   .then(res => res.json())
+  //   .then(book => renderBook(book))
+  //   .catch(err => {
+  //     console.error(err);
+  //     makeError(err);
+  //     const img = document.createElement('img');
+  //     img.src = "https://i.kym-cdn.com/entries/icons/original/000/021/464/14608107_1180665285312703_1558693314_n.jpg"
+  //     document.querySelector('main').prepend(img);
+  //     window.setTimeout(() => {
+  //       img.remove()
+  //     }, 5000)
+  //   })
+  
+  // if you'd like to use the postJSON function to call fetch() instead
+  // you can do so like this:
+  postJSON('http://localhost:3000/books', book)
+    .then(book => renderBook(book))
+    .catch(err => {
+      console.error(err);
+      makeError(err);
+      const img = document.createElement('img');
+      img.src = "https://i.kym-cdn.com/entries/icons/original/000/021/464/14608107_1180665285312703_1558693314_n.jpg"
+      document.querySelector('main').prepend(img);
+      window.setTimeout(() => {
+        img.remove()
+      }, 5000)
+    })
+  
+  toggleBookForm()
   e.target.reset();
 })
 
 // 2. Hook up the new Store form so it that it works to add a new store to our database and also to the DOM (as an option within the select tag)
+const newStoreForm = document.querySelector('#store-form');
 
+newStoreForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // debugger;
+  const store = {};
+  store.name = e.target.name.value;
+  store.address = e.target.address.value;
+  store.number = e.target.number.value;
+  store.hours = e.target.hours.value;
+  store.location = e.target.location.value;
+  // {
+  //     "id": 1, // will be assigned by the database
+  //     "location": "Seattle",
+  //     "address": "333 st ne Seattle wa 99999",
+  //     "number": 9999999999,
+  //     "name": "Easley's Technical Books",
+  //     "hours": "Monday - Friday 9am - 6pm"
+  //   },
+  fetch("http://localhost:3000/stores", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(store)
+  })
+    .then(res => res.json())
+    .then(addSelectOptionForStore)
+})
 
 // Invoking functions    
 // fetching our data!

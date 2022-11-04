@@ -23,6 +23,14 @@
       "number": 5554443333,
       "name": "Tech BooksRus",
       "hours": "Thursday - Saturday 11am - 7pm"
+    },
+    {
+      "name": "BooksRUs",
+      "address": "555 Shangri-La",
+      "number": "555-555-5555",
+      "hours": "5AM-5PM",
+      "location": "La La Land",
+      "id": 4
     }
   ],
   "books": [
@@ -135,6 +143,24 @@
       ],
       "inventory": 20,
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg"
+    },
+    {
+      "title": "JS: the Good Parts",
+      "author": "Douglas Crockford",
+      "price": 33,
+      "reviews": [],
+      "inventory": 5,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+      "id": 8
+    },
+    {
+      "title": "JS: the Good Parts",
+      "author": "Douglas Crockford",
+      "price": 33,
+      "reviews": [],
+      "inventory": 5,
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg",
+      "id": 9
     }
   ]
 }

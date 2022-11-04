@@ -10,5 +10,10 @@ function postJSON(url, data) {
     },
     body: JSON.stringify(data)
   })
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw response;
+    })
 }
