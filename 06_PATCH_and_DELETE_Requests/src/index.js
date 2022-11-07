@@ -53,6 +53,10 @@ function addSelectOptionForStore(store) {
 function renderBook(book) {
   const li = document.createElement('li');
   li.className = 'list-li';
+  li.dataset.bookId = book.id;
+  // so if I need to target an individual book card from somewhere
+  // else in my code, I can run:
+  // document.querySelector('.list-li[data-book-id="7"]')
   
   const h3 = document.createElement('h3');
   h3.textContent = book.title;
@@ -62,6 +66,45 @@ function renderBook(book) {
   
   const pPrice = document.createElement('p');
   pPrice.textContent = priceFormatter(book.price);
+
+  const inventoryInput = document.createElement('input');
+  inventoryInput.type = 'number';
+  inventoryInput.className = 'inventory-input';
+  inventoryInput.value = book.inventory;
+  inventoryInput.min = 0;
+  let scheduledUpdateId;
+  inventoryInput.addEventListener('change', (e) => {
+    const newInventoryValue = Number(e.target.value);
+    window.clearTimeout(scheduledUpdateId);
+    scheduledUpdateId = window.setTimeout(() => {
+      fetch(`http://localhost:3000/books/${book.id}`, {
+        method: 'PATCH', 
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({inventory: newInventoryValue})
+      })
+        .then(res => res.json())
+        .then(book => {
+          // pessimistic because we update the DOM after successful server update
+          if (book.inventory === 0) {
+            pStock.textContent = "Out of stock";
+          } else if (book.inventory < 3) {
+            pStock.textContent = "Only a few left!";
+          } else {
+            pStock.textContent = "In stock"
+          }
+        })
+    }, 300)
+    // optimistic because we're not waiting for server response to update the DOM
+    if (newInventoryValue === 0) {
+      pStock.textContent = "Out of stock";
+    } else if (newInventoryValue < 3) {
+      pStock.textContent = "Only a few left!";
+    } else {
+      pStock.textContent = "In stock"
+    }
+  })
   
   const pStock = document.createElement('p');
   pStock.className = "grey";
@@ -79,12 +122,37 @@ function renderBook(book) {
 
   const btn = document.createElement('button');
   btn.textContent = 'Delete';
+  // 💡 i can store the id of the book in the DOM
+  // I would need this approach if I were attaching the delete button event listeners outside of renderBook
+  // btn.dataset.bookId = book.id;
 
+  // we're defining our event handlers in the
+  // same scope where our DOM element variables
+  // were created, so we can use the existing
+  // variables rather than needing to query the DOM
+  // to get the appropriate nodes.
   btn.addEventListener('click', (e) => {
-    li.remove();
+    // so I can access it here:
+    // 💡 const bookId = e.target.dataset.bookId;
+    // optimistic
+    // fetch(`http://localhost:3000/books/${book.id}`, {
+    //   method: "DELETE"
+    // })
+    // li.remove();
+
+    // pessimistic
+
+    // or I can use the fact that book is still in scope when I define this event handler
+    // 💡 fetch(`http://localhost:3000/books/${bookId}`, { 
+    fetch(`http://localhost:3000/books/${book.id}`, { 
+      method: "DELETE"
+    })
+      .then(res => {
+        li.remove();
+      })
   })
 
-  li.append(h3,pAuthor,pPrice,pStock,img,btn);
+  li.append(h3, pAuthor, pPrice, inventoryInput, pStock, img, btn);
   document.querySelector('#book-list').append(li);
 }
 
@@ -212,7 +280,12 @@ storeForm.addEventListener('submit', (e) => {
   //   },
   if (storeEditMode) {
     // ✅ write code for updating the store here
-    
+    const storeId = document.querySelector('#store-selector').value;
+    patchJSON(`http://localhost:3000/stores/${storeId}`, store)
+      .then(store => {
+        renderHeader(store);
+        renderFooter(store);
+      })
     storeEditMode = false;
   } else {
     fetch("http://localhost:3000/stores", {
