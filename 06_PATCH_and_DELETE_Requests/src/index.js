@@ -149,6 +149,8 @@ function toggleStoreForm() {
 function hideStoreForm() {
   document.querySelector('#store-form').classList.add('collapsed');
   storeFormVisible = false;
+  storeEditMode = false;
+  storeForm.reset();
   toggleStoreFormButton.textContent = "New Store";
 }
 
@@ -223,6 +225,7 @@ storeForm.addEventListener('submit', (e) => {
       .then(res => res.json())
       .then(addSelectOptionForStore)
   }
+  e.target.reset();
 })
 
 // edit store button
