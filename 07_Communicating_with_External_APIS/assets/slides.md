@@ -105,7 +105,6 @@ width: 1400
 - in our case, add `src/keys.js` on its own line within this file. {.fragment}
 - ✅⁇: check your version control tab within VSCode and make sure you <b>don't</b> see your `keys.js` file there. If you do, then check for a mismatch between what you have in your `.gitignore` and the name/path to the `keys.js` file. {.fragment}
 - ✅ When keys.js <b>doesn't appear</b> in the list of files with untracked changes, you've done this step correctly. {.fragment}
--
 
 ---
 
