@@ -124,3 +124,13 @@ fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURI(query)}&key=${A
   .then(res =>res.json())
   .then(console.log);
 ```
+
+---
+
+## Coming Full Circle
+
+<img 
+  src="./data-display-behavior.drawio.svg" 
+  alt="Data Display and Behavior Diagram" 
+  style="width: 80%;"
+/>
